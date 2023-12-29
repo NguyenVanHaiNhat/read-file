@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        //cách 1
+        File f = new File("E:\\Bootcamp Java Fullstack\\C1023H1-JV101-NguyenVanHaiNhat\\Module_2\\ss16_IO_Text_File\\read-file\\file.txt");
+        try {
+            BufferedReader br = Files.newBufferedReader(f.toPath(), StandardCharsets.UTF_8);
+            String line;
+            while (true){
+                line = br.readLine();
+                if (line == null){
+                    break;
+                } else
+                    System.out.println(line);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //cách 2
+        File f2 = new File("E:\\Bootcamp Java Fullstack\\C1023H1-JV101-NguyenVanHaiNhat\\Module_2\\ss16_IO_Text_File\\read-file\\file.txt");
+        try {
+            List<String> allText = Files.readAllLines(f2.toPath(), StandardCharsets.UTF_8);
+            for (String line: allText){
+                System.out.println(line);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+}
